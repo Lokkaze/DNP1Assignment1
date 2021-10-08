@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using DNP1Assignment1.Models;
 
 namespace DNP1Assignment1.Persistence
 {
-    public class FileContext
+    public class FileContext : IFileContext
     {
         public IList<Family> Families { get; private set; }
         public IList<Adult> Adults { get; private set; }
@@ -18,11 +19,19 @@ namespace DNP1Assignment1.Persistence
         {
             Families = File.Exists(familiesFile) ? ReadData<Family>(familiesFile) : new List<Family>();
             Adults = File.Exists(adultsFile) ? ReadData<Adult>(adultsFile) : new List<Adult>();
+            foreach (var adult in Adults)
+            {
+                if (adult.JobTitle == null)
+                {
+                    adult.JobTitle.JobTitle = "No job";
+                    adult.JobTitle.Salary = 0;
+                }
+            }
         }
 
         private IList<T> ReadData<T>(string s)
         {
-            using (var jsonReader = File.OpenText(familiesFile))
+            using (var jsonReader = File.OpenText(s))
             {
                 return JsonSerializer.Deserialize<List<T>>(jsonReader.ReadToEnd());
             }
@@ -49,6 +58,20 @@ namespace DNP1Assignment1.Persistence
             {
                 outputFile.Write(jsonAdults);
             }
+        }
+
+        public void AddAdult(Adult adult)
+        {
+            int max = Adults.Max(adult => adult.Id);
+            adult.Id = (++max);
+            Adults.Add(adult);
+            SaveChanges();
+        }
+
+        public IList<Adult> GetAdults()
+        {
+            List<Adult> tmp = new List<Adult>(Adults);
+            return tmp;
         }
     }
 }
