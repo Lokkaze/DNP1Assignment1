@@ -6,19 +6,22 @@
 <h1>
     Adults list
 </h1>
-@if (adults == null)
+<p>
+    Filter by name:<input type="text" @oninput="@((arg) => Filter(arg))" style="width: 200px"/>
+</p>
+@if (adultsToShow == null)
 {
     <p>
         <em>Loading...</em>
     </p>
 }
-else if (!adults.Any())
+else if (!adultsToShow.Any())
 {
     <p>
         <em>No Adults information exist.</em>
     </p>
 }
-else if (adults.Any())
+else if (adultsToShow.Any())
 {
     <table class="table">
         <thead>
@@ -36,7 +39,7 @@ else if (adults.Any())
         </tr>
         </thead>
         <tbody>
-        @foreach (var item in adults)
+        @foreach (var item in adultsToShow)
         {
             <tr>
                 <td>@item.Id</td>
@@ -55,11 +58,30 @@ else if (adults.Any())
     </table>
 }
 
-    @code {
-    private IList<Adult> adults;
+@code {
+    private IList<Adult> adultsToShow;
+    private IList<Adult> allAdults;
+
+    private void Filter(ChangeEventArgs changeEventArgs)
+    {
+        string? filterByName = null;
+        try
+        {
+            filterByName = changeEventArgs.Value.ToString();
+        }catch (Exception e){}
+        if (filterByName != null)
+        {
+            adultsToShow = allAdults.Where(t => (t.FirstName + " " + t.LastName).Contains(filterByName)).ToList();
+        }
+        else
+        {
+            adultsToShow = allAdults;
+        }
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        adults = AdultsData.GetAdults();
+        allAdults = AdultsData.GetAdults();
+        adultsToShow = allAdults;
     }
 }
