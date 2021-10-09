@@ -6,58 +6,64 @@
 <h1>
     Adults list
 </h1>
-<p>
-    Filter by name:<input type="text" @oninput="@((arg) => Filter(arg))" style="width: 200px"/>
-</p>
-@if (adultsToShow == null)
-{
-    <p>
-        <em>Loading...</em>
-    </p>
-}
-else if (!adultsToShow.Any())
-{
-    <p>
-        <em>No Adults information exist.</em>
-    </p>
-}
-else if (adultsToShow.Any())
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>HairColor</th>
-            <th>EyeColor</th>
-            <th>Age</th>
-            <th>Weight</th>
-            <th>Height</th>
-            <th>Gender</th>
-            <th>JobTitle</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in adultsToShow)
+<AuthorizeView>
+    <Authorized>
+        <p>
+            Filter by name:<input type="text" @oninput="@((arg) => Filter(arg))" style="width: 200px"/>
+        </p>
+        @if (adultsToShow == null)
         {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.FirstName</td>
-                <td>@item.LastName</td>
-                <td>@item.HairColor</td>
-                <td>@item.EyeColor</td>
-                <td>@item.Age</td>
-                <td>@item.Weight</td>
-                <td>@item.Height</td>
-                <td>@item.Sex</td>
-                <td>@item.JobTitle.JobTitle</td>
-            </tr>
+            <p>
+                <em>Loading...</em>
+            </p>
         }
-        </tbody>
-    </table>
-}
-
+        else if (!adultsToShow.Any())
+        {
+            <p>
+                <em>No Adults information exist.</em>
+            </p>
+        }
+        else if (adultsToShow.Any())
+        {
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>HairColor</th>
+                    <th>EyeColor</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Gender</th>
+                    <th>JobTitle</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in adultsToShow)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.HairColor</td>
+                        <td>@item.EyeColor</td>
+                        <td>@item.Age</td>
+                        <td>@item.Weight</td>
+                        <td>@item.Height</td>
+                        <td>@item.Sex</td>
+                        <td>@item.JobTitle.JobTitle</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+    </Authorized>
+    <NotAuthorized>
+        <h2>You need to log in to access this page!</h2>
+    </NotAuthorized>
+</AuthorizeView>
 @code {
     private IList<Adult> adultsToShow;
     private IList<Adult> allAdults;

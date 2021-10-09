@@ -5,7 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Data" />
+      <_ContentIncludedByDefault Remove="Component\Login.razor" />
     </ItemGroup>
 
 </Project>

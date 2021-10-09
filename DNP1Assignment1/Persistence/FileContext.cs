@@ -9,7 +9,6 @@ namespace DNP1Assignment1.Persistence
 {
     public class FileContext : IFileContext
     {
-        public IList<Family> Families { get; private set; }
         public IList<Adult> Adults { get; private set; }
 
         private readonly string familiesFile = "families.json";
@@ -17,7 +16,6 @@ namespace DNP1Assignment1.Persistence
 
         public FileContext()
         {
-            Families = File.Exists(familiesFile) ? ReadData<Family>(familiesFile) : new List<Family>();
             Adults = File.Exists(adultsFile) ? ReadData<Adult>(adultsFile) : new List<Adult>();
             foreach (var adult in Adults)
             {
@@ -39,15 +37,6 @@ namespace DNP1Assignment1.Persistence
 
         public void SaveChanges()
         {
-            // storing families
-            string jsonFamilies = JsonSerializer.Serialize(Families, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-            using (StreamWriter outputFile = new StreamWriter(familiesFile, false))
-            {
-                outputFile.Write(jsonFamilies);
-            }
 
             // storing persons
             string jsonAdults = JsonSerializer.Serialize(Adults, new JsonSerializerOptions

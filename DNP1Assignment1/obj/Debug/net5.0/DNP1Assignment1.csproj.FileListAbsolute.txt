@@ -1,7 +1,6 @@
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\adults.json
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\appsettings.json
-C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\families.json
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\DNP1Assignment1.StaticWebAssets.xml
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\DNP1Assignment1.exe
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\bin\Debug\net5.0\DNP1Assignment1.deps.json
@@ -58,3 +57,5 @@ C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\ob
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\Razor\Pages\Adults.razor.g.cs
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\RazorDeclaration\Pages\AddAdult.razor.g.cs
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\Razor\Pages\AddAdult.razor.g.cs
+C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\RazorDeclaration\LoginComponent\Login.razor.g.cs
+C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\Razor\LoginComponent\Login.razor.g.cs

@@ -82,6 +82,13 @@ using DNP1Assignment1.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 1 "C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\Shared\MainLayout.razor"
+using DNP1Assignment1.LoginComponent;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
