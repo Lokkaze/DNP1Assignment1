@@ -67,11 +67,11 @@ else if (adultsToShow.Any())
         string? filterByName = null;
         try
         {
-            filterByName = changeEventArgs.Value.ToString();
+            filterByName = changeEventArgs.Value.ToString().ToLower();
         }catch (Exception e){}
         if (filterByName != null)
         {
-            adultsToShow = allAdults.Where(t => (t.FirstName + " " + t.LastName).Contains(filterByName)).ToList();
+            adultsToShow = allAdults.Where(t => (t.FirstName.ToLower() + " " + t.LastName.ToLower()).Contains(filterByName)).ToList();
         }
         else
         {
