@@ -2,6 +2,7 @@
 @using DNP1Assignment1.Models
 @using DNP1Assignment1.Persistence
 @inject IFileContext AdultsData
+@inject NavigationManager NavMgr
 
 <h1>
     Adults list
@@ -38,6 +39,8 @@
                     <th>Height</th>
                     <th>Gender</th>
                     <th>JobTitle</th>
+                    <th>Remove</th>
+                    <th>Edit</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,6 +57,16 @@
                         <td>@item.Height</td>
                         <td>@item.Sex</td>
                         <td>@item.JobTitle.JobTitle</td>
+                        <td>
+                            <button @onclick="@(() => RemoveAdult(item.Id))">
+                                <i class="oi oi-trash" style="color: red"/>
+                            </button>
+                        </td>
+                        <td>
+                            <button @onclick="@(() => Edit(item.Id))">
+                                <i class="oi oi-pencil" style="color:#1b6ec2"/>
+                            </button>
+                        </td>
                     </tr>
                 }
                 </tbody>
@@ -64,6 +77,7 @@
         <h2>You need to log in to access this page!</h2>
     </NotAuthorized>
 </AuthorizeView>
+
 @code {
     private IList<Adult> adultsToShow;
     private IList<Adult> allAdults;
@@ -74,7 +88,10 @@
         try
         {
             filterByName = changeEventArgs.Value.ToString().ToLower();
-        }catch (Exception e){}
+        }
+        catch (Exception e)
+        {
+        }
         if (filterByName != null)
         {
             adultsToShow = allAdults.Where(t => (t.FirstName.ToLower() + " " + t.LastName.ToLower()).Contains(filterByName)).ToList();
@@ -85,9 +102,22 @@
         }
     }
 
+    private void RemoveAdult(int aId)
+    {
+        Adult adultToRemove = allAdults.First(t => t.Id == aId);
+        AdultsData.RemoveAdult(aId);
+        allAdults.Remove(adultToRemove);
+    }
+
+    private void Edit(int aId)
+    {
+        NavMgr.NavigateTo($"Edit/{aId}");
+    }
+
     protected override async Task OnInitializedAsync()
     {
         allAdults = AdultsData.GetAdults();
         adultsToShow = allAdults;
     }
+
 }

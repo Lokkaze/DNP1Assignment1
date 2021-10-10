@@ -57,10 +57,29 @@ namespace DNP1Assignment1.Persistence
             SaveChanges();
         }
 
+        public void RemoveAdult(int aId)
+        {
+            Adult toRemove = Adults.First(t => t.Id == aId);
+            Adults.Remove(toRemove);
+            SaveChanges();
+        }
+
+        public void Update(Adult adult)
+        {
+            Adult toUpdate = Adults.First(t => t.Id == adult.Id);
+            toUpdate = adult;
+            SaveChanges();
+        }
+
         public IList<Adult> GetAdults()
         {
             List<Adult> tmp = new List<Adult>(Adults);
             return tmp;
+        }
+
+        public Adult GetAdult(int aId)
+        {
+            return Adults.FirstOrDefault(t => t.Id == aId);
         }
     }
 }

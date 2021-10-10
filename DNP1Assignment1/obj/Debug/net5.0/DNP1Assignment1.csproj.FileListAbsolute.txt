@@ -59,3 +59,5 @@ C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\ob
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\Razor\Pages\AddAdult.razor.g.cs
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\RazorDeclaration\LoginComponent\Login.razor.g.cs
 C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\Razor\LoginComponent\Login.razor.g.cs
+C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\RazorDeclaration\Pages\Edit.razor.g.cs
+C:\Users\Lokkaze\Desktop\uni\DNP1\Assignment1\DNP1Assignment1\DNP1Assignment1\obj\Debug\net5.0\Razor\Pages\Edit.razor.g.cs
